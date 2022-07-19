@@ -16,6 +16,7 @@ Y_MAX = SCREEN_HEIGHT - 10
 # Game constants
 GROUND_HEIGHT = 200
 JUMP_VELOCITY = 20
+# DOUBLE_JUMP_MARGIN = 1 # Only if we allow double jumping
 
 
 # Colors
@@ -80,6 +81,9 @@ class Player(arcade.Sprite):
     def jump(self):
         # Can only jump if on the ground
         if self.sy == GROUND_HEIGHT:
+        # Or if we allow to double jump on the apex
+        # TODO: Only allow a single double jump?
+        # if self.sy == GROUND_HEIGHT or abs(self.vy) <= abs(DOUBLE_JUMP_MARGIN):
             # Jump simply adds vy
             self.vy = JUMP_VELOCITY
 
