@@ -1,8 +1,4 @@
-# Basic arcade program using objects
-# Displays a white window with a blue circle in the middle
-
 # Imports
-from sre_constants import JUMP
 import arcade
 
 # TODO: Load from config
