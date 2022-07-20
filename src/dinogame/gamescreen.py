@@ -1,5 +1,5 @@
 import arcade
-from dinogame import BACKGROUND_COLOR, SCREEN_HEIGHT, SCREEN_WIDTH, SCREEN_TITLE, PLAYER_COUNT, MAX_ENEMY_COUNT
+from dinogame import BACKGROUND_COLOR, PLAYER_X, SCREEN_HEIGHT, SCREEN_WIDTH, SCREEN_TITLE, PLAYER_COUNT, MAX_ENEMY_COUNT
 from dinogame.player import Player
 from dinogame.enemy import Enemy
 
@@ -60,3 +60,19 @@ class GameScreen(arcade.Window):
         self.backgrounds_list.update()
         self.enemies_list.update()
         self.players_list.update()
+
+        # Save player location
+        dx = self.players_list[0].sx
+        dy = self.players_list[0].sy
+        # Translate all enemies (with an inline list-compreshension loop)
+        [e.translate((- dx + PLAYER_X, 0)) for e in self.enemies_list]
+        # Translate all players (with an inline list-compreshension loop)
+        [e.translate((- dx + PLAYER_X, 0)) for e in self.players_list]
+
+        # Add in new enemies if the enemies_list is no longer full
+        # if len(self.enemies_list) < MAX_ENEMY_COUNT:
+        # range() loop will be empty if no more enemies
+        # BUG: How does range handle negative input?
+        for i in range(MAX_ENEMY_COUNT-len(self.enemies_list)):
+            enemy = Enemy()
+            self.enemies_list.append(enemy)

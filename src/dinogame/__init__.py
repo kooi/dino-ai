@@ -23,7 +23,7 @@ ENEMY_TYPES = [
     {
         'image': './resources/enemies/bird.png',
         'sy': 400,
-        'vx': 0,
+        'vx': -2,
         'vy': 0,
         'ax': 0,
         'ay': 0,
@@ -42,6 +42,9 @@ ENEMY_TYPES = [
 GROUND_HEIGHT = 200
 JUMP_VELOCITY = 20
 GRAVITY = -1.5
+PLAYER_X = 200
+PLAYER_VX = 80
+CUTOFF = 100
 # DOUBLE_JUMP_MARGIN = 1 # Only if we allow double jumping
 
 # Colors
@@ -51,3 +54,7 @@ SCREEN_TITLE = "DinoGame"
 # Counts
 PLAYER_COUNT = 1
 MAX_ENEMY_COUNT = 4
+
+# DEBUG
+DEBUG = True
+TIMINGS_COUNTER = 1000
