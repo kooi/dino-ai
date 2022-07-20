@@ -61,11 +61,11 @@ class GameScreen(arcade.Window):
         self.enemies_list.update()
         self.players_list.update()
 
-        # Generate a list of all sprites that collided with the player.
-        # coins_hit_list = arcade.check_for_collision_with_list(self.player_sprite,
-        #                                                       self.coin_list)
+        # TODO
+        # - Collision detection for player and enemies
+        # - Correct placement (align either high or low)
+        # - Correct spawn location (offscreen right)
+        # - Correct hitboxes
+        # - Translate all by the player location - player expected location to make the background scroll
+        # - Implement ground and background
 
-        # Loop through each colliding sprite, remove it, and add to the score.
-        # for coin in coins_hit_list:
-        #     coin.remove_from_sprite_lists()
-        #     self.score += 1
