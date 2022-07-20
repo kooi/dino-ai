@@ -1,6 +1,7 @@
 import arcade
-from dinogame import BACKGROUND_COLOR, SCREEN_HEIGHT, SCREEN_WIDTH, SCREEN_TITLE, PLAYER_COUNT
+from dinogame import BACKGROUND_COLOR, SCREEN_HEIGHT, SCREEN_WIDTH, SCREEN_TITLE, PLAYER_COUNT, MAX_ENEMY_COUNT
 from dinogame.player import Player
+from dinogame.enemy import Enemy
 
 
 class GameScreen(arcade.Window):
@@ -31,8 +32,9 @@ class GameScreen(arcade.Window):
             player = Player()
             self.players_list.append(player)
         # Add enemies
-        # for i in range(MAX_ENEMY_COUNT):
-        #     enemy = Enemy()
+        for i in range(MAX_ENEMY_COUNT):
+            enemy = Enemy()
+            self.enemies_list.append(enemy)
 
     def on_draw(self):
         """Called whenever you need to draw your window
