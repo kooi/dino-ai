@@ -60,12 +60,3 @@ class GameScreen(arcade.Window):
         self.backgrounds_list.update()
         self.enemies_list.update()
         self.players_list.update()
-
-        # TODO
-        # - Collision detection for player and enemies
-        # - Correct placement (align either high or low)
-        # - Correct spawn location (offscreen right)
-        # - Correct hitboxes
-        # - Translate all by the player location - player expected location to make the background scroll
-        # - Implement ground and background
-
