@@ -14,5 +14,6 @@ if __name__ == "__main__":
     arcade.run()
     
     if DEBUG:
+        print('[DEBUG] Showing stats')
         print('fps:', arcade.get_fps(1200))
         arcade.print_timings()

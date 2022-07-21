@@ -52,7 +52,6 @@ BACKGROUND_COLOR = color.ALMOND
 # Names
 SCREEN_TITLE = "DinoGame"
 # Counts
-PLAYER_COUNT = 1
 MAX_ENEMY_COUNT = 4
 
 # DEBUG

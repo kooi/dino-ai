@@ -1,5 +1,5 @@
 import arcade
-from dinogame import BACKGROUND_COLOR, PLAYER_X, SCREEN_HEIGHT, SCREEN_WIDTH, SCREEN_TITLE, PLAYER_COUNT, MAX_ENEMY_COUNT
+from dinogame import BACKGROUND_COLOR, PLAYER_X, SCREEN_HEIGHT, SCREEN_WIDTH, SCREEN_TITLE, MAX_ENEMY_COUNT
 from dinogame.player import Player
 from dinogame.enemy import Enemy
 
@@ -18,7 +18,8 @@ class GameScreen(arcade.Window):
         # Setup empty sprite lists
         self.backgrounds_list = arcade.SpriteList()  # List of background objects
         self.enemies_list = arcade.SpriteList()  # List of enemy objects
-        self.players_list = arcade.SpriteList()  # Probably just one player.
+        self.player = None  # Create player in setup()
+        self.score = 0
 
         # Set the background window
         arcade.set_background_color(BACKGROUND_COLOR)
@@ -28,9 +29,7 @@ class GameScreen(arcade.Window):
         """
         # TODO: Check existing lengths
         # Add players
-        for i in range(PLAYER_COUNT):
-            player = Player()
-            self.players_list.append(player)
+        self.player = Player()
         # Add enemies
         for i in range(MAX_ENEMY_COUNT):
             enemy = Enemy()
@@ -46,11 +45,13 @@ class GameScreen(arcade.Window):
         # Draw all the sprite objects
         self.backgrounds_list.draw()
         self.enemies_list.draw()
-        self.players_list.draw()
+        # self.players_list.draw()
+        self.player.draw()
 
     def on_key_press(self, symbol: int, modifiers: int):
         if symbol == arcade.key.UP:
-            self.players_list[0].jump()
+            # self.players_list[0].jump()
+            self.player.jump()
 
     def update(self, dt):
         """ Movement and game logic """
@@ -59,20 +60,29 @@ class GameScreen(arcade.Window):
         # example though.)
         self.backgrounds_list.update()
         self.enemies_list.update()
-        self.players_list.update()
+        # self.players_list.update()
+        self.player.update()
+
+        # Do collision detection
+        hitlist = self.player.collides_with_list(self.enemies_list)
+        if len(hitlist) > 0:
+            print('Game over.')
+            print(self.score, 'points')
+            self.close()
+
+        # Update score
+        # TODO: Show score during game
+        self.score += 1
 
         # Save player location
-        dx = self.players_list[0].sx
-        dy = self.players_list[0].sy
+        dx = self.player.sx
         # Translate all enemies (with an inline list-compreshension loop)
         [e.translate((- dx + PLAYER_X, 0)) for e in self.enemies_list]
-        # Translate all players (with an inline list-compreshension loop)
-        [e.translate((- dx + PLAYER_X, 0)) for e in self.players_list]
+        # Translate player
+        self.player.translate((- dx + PLAYER_X, 0))
 
         # Add in new enemies if the enemies_list is no longer full
-        # if len(self.enemies_list) < MAX_ENEMY_COUNT:
-        # range() loop will be empty if no more enemies
-        # BUG: How does range handle negative input?
+        # range() loop will be empty if no more enemies (or for negative ranges)
         for i in range(MAX_ENEMY_COUNT-len(self.enemies_list)):
             enemy = Enemy()
             self.enemies_list.append(enemy)

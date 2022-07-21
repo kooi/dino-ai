@@ -1,6 +1,9 @@
 import arcade
 from dinogame import PLAYER_VX, PLAYER_X, X_MIN, X_MAX, GROUND_HEIGHT, JUMP_VELOCITY, GRAVITY
 
+# TODO: Set player state as either RUNNING, DUCKING or JUMPING with according sprites and sizes
+# TODO: Add animation
+
 
 class Player(arcade.Sprite):
     """Player object (probably a dinosaur)"""
@@ -42,13 +45,6 @@ class Player(arcade.Sprite):
 
         # TODO: Collision detection, probably automatable
 
-        # Handle edge of screen
-        # Remove edge handling because of translate
-        # if self.sx < X_MIN:
-        #     self.sx = X_MAX
-        # if self.sx > X_MAX:
-        #     self.sx = X_MIN
-
         # Handle ground
         if self.sy < GROUND_HEIGHT + self.height/2:
             self.sy = GROUND_HEIGHT + self.height/2
@@ -57,10 +53,6 @@ class Player(arcade.Sprite):
         self.center_y = self.sy
 
     def jump(self):
-        # Or if we allow to double jump on the apex
-        # TODO: Only allow a single double jump?
-        # if self.sy == GROUND_HEIGHT or abs(self.vy) <= abs(DOUBLE_JUMP_MARGIN):
-
         # Can only jump if on the ground
         # IDEA: On creation establish a baseline as an object property instead of a ground height
         if self.sy == GROUND_HEIGHT + self.height/2:
