@@ -53,8 +53,8 @@ class Player(arcade.Sprite):
         self.center_y = self.sy
 
     def jump(self):
-        # Can only jump if on the ground
         # IDEA: On creation establish a baseline as an object property instead of a ground height
+        # Can only jump if on the ground
         if self.sy == GROUND_HEIGHT + self.height/2:
             # Jump simply adds vy
             self.vy = JUMP_VELOCITY

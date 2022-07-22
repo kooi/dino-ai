@@ -7,12 +7,11 @@ if __name__ == "__main__":
     game = GameScreen()
     game.setup()
 
-
     # DEBUG: Timings
     if DEBUG:
         arcade.enable_timings()
     arcade.run()
-    
+
     if DEBUG:
         print('[DEBUG] Showing stats')
         print('fps:', arcade.get_fps(1200))

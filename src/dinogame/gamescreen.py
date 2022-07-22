@@ -45,12 +45,10 @@ class GameScreen(arcade.Window):
         # Draw all the sprite objects
         self.backgrounds_list.draw()
         self.enemies_list.draw()
-        # self.players_list.draw()
         self.player.draw()
 
     def on_key_press(self, symbol: int, modifiers: int):
         if symbol == arcade.key.UP:
-            # self.players_list[0].jump()
             self.player.jump()
 
     def update(self, dt):
@@ -60,7 +58,6 @@ class GameScreen(arcade.Window):
         # example though.)
         self.backgrounds_list.update()
         self.enemies_list.update()
-        # self.players_list.update()
         self.player.update()
 
         # Do collision detection

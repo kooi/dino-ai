@@ -49,17 +49,6 @@ class Enemy(arcade.Sprite):
         self.sx = self.sx + self.vx * self.dt
         self.sy = self.sy + self.vy * self.dt
 
-        # TODO: Collision detection, probably automatable
-        # Yes, with self.collides_with_list()
-
-        # TODO: Probably not necessary...
-        # Handle edge of screen
-        # Remove edge handling because of translate
-        # if self.sx < X_MIN:
-        #     self.sx = X_MAX
-        # if self.sx > X_MAX:
-        #     self.sx = X_MIN
-
         # TODO: Probably not necessary...
         # Handle ground
         if self.sy < GROUND_HEIGHT + self.height/2:
