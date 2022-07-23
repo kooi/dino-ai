@@ -13,6 +13,10 @@ X_MAX = SCREEN_WIDTH - 10
 Y_MIN = 10
 Y_MAX = SCREEN_HEIGHT - 10
 
+# GUI
+FONT_SIZE = 20
+FONT_LINE_HEIGHT = FONT_SIZE * 2
+
 # (Enemy) spawning constraints
 # TODO: Constrain spawning to offscreen to the right
 SPAWN_MIN_X = X_MAX/2
@@ -40,7 +44,7 @@ ENEMY_TYPES = [
 
 # Game constants
 GROUND_HEIGHT = 200
-JUMP_VELOCITY = 20
+JUMP_VELOCITY = 30
 GRAVITY = -1.5
 PLAYER_X = 200
 PLAYER_VX = 8

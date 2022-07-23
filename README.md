@@ -12,6 +12,6 @@ A reimplementation of the run and jump dinosaur game from offline mode chrome.
 - [ ] Implement ground and background
 - [ ] Add a parallax value to background (to reduce translate effect for background)
 - [x] Add scoring
-- [ ] Show score onscreen
+- [x] Show score onscreen
 - [ ] Track player state [RUNNING, DUCKING, (JUMPING)] with appropriate sprite sizes
 - [ ] Add Player animation
