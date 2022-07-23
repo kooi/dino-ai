@@ -1,3 +1,4 @@
-reference*
-venv*
+reference
+venv
 __pycache__
+git-story_media
