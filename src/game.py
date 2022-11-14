@@ -1,5 +1,5 @@
 import arcade
-from dinogame import DEBUG, TIMINGS_COUNTER
+from dinogame import DEBUG
 from dinogame.gamescreen import GameScreen
 
 # Main code entry point
